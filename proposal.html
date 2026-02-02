@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .heart-bg {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.3;
+            animation: float 15s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+                opacity: 0.1;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .ring-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .question-container {
+            position: relative;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+            position: relative;
+            width: 100%;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 20px 50px;
+            font-size: 1.3em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        #noBtn {
+            background: #e0e0e0;
+            color: #666;
+            position: absolute;
+            transition: all 0.2s ease;
+        }
+
+        .message {
+            display: none;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message h2 {
+            color: #f5576c;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .message p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .hearts {
+            font-size: 40px;
+            margin: 20px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        .celebration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f5576c;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background hearts -->
+    <div class="heart-bg" style="top: 10%; left: 10%;">💕</div>
+    <div class="heart-bg" style="top: 20%; right: 15%; animation-delay: 2s;">❤️</div>
+    <div class="heart-bg" style="bottom: 15%; left: 20%; animation-delay: 4s;">💖</div>
+    <div class="heart-bg" style="bottom: 25%; right: 10%; animation-delay: 6s;">💗</div>
+    <div class="heart-bg" style="top: 50%; left: 5%; animation-delay: 3s;">💝</div>
+    <div class="heart-bg" style="top: 60%; right: 8%; animation-delay: 5s;">💘</div>
+
+    <div class="container">
+        <div class="ring-icon">💍</div>
+        
+        <div class="question-container">
+            <div id="questionDiv">
+                <h1>Will You Marry Me?</h1>
+                <div class="buttons">
+                    <button id="yesBtn">Yes! ❤️</button>
+                    <button id="noBtn">No</button>
+                </div>
+            </div>
+
+            <div class="message" id="messageDiv">
+                <div class="hearts">❤️ 💕 ❤️</div>
+                <h2>You've Made Me The Happiest!</h2>
+                <p>From the moment I met you, I knew my life would never be the same. Your smile lights up my darkest days, your laughter is my favorite melody, and your love is my greatest treasure.</p>
+                <p>Every moment with you feels like a beautiful dream I never want to wake from. You are my best friend, my partner, my everything.</p>
+                <p>I promise to love you, cherish you, and stand by your side through every chapter of our story. Together, we'll create a lifetime of unforgettable memories.</p>
+                <p><strong>Forever yours, with all my heart. 💕</strong></p>
+                <div class="hearts">💖 💗 💖</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="celebration" id="celebration"></div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionDiv = document.getElementById('questionDiv');
+        const messageDiv = document.getElementById('messageDiv');
+        const celebration = document.getElementById('celebration');
+
+        // Make the No button move away when mouse gets near
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('click', moveButton);
+
+        function moveButton() {
+            const container = document.querySelector('.buttons');
+            const containerRect = container.getBoundingClientRect();
+            
+            // Random position within the buttons container
+            const maxX = containerRect.width - noBtn.offsetWidth;
+            const maxY = containerRect.height - noBtn.offsetHeight;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // When Yes is clicked
+        yesBtn.addEventListener('click', () => {
+            questionDiv.style.display = 'none';
+            messageDiv.style.display = 'block';
+            
+            // Create confetti
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 100);
+            }
+        });
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = ['#f5576c', '#f093fb', '#667eea', '#764ba2'][Math.floor(Math.random() * 4)];
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            celebration.appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+        // Position No button initially
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = '60%';
+        noBtn.style.top = '0';
+    </script>
+</body>
+</html>
