@@ -48,6 +48,7 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             text-align: center;
             max-width: 500px;
+            width: 90%;
             position: relative;
             z-index: 10;
         }
@@ -69,6 +70,86 @@
             margin-bottom: 30px;
             font-weight: bold;
             letter-spacing: 1px;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+                width: 95%;
+                border-radius: 20px;
+            }
+
+            .ring-icon {
+                font-size: 60px;
+                margin-bottom: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .question-container {
+                min-height: 180px;
+            }
+
+            button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+
+            .buttons {
+                gap: 20px;
+                min-height: 70px;
+            }
+
+            .message h2 {
+                font-size: 1.6em;
+                margin-bottom: 20px;
+            }
+
+            .message p {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            .hearts {
+                font-size: 30px;
+                margin: 15px 0;
+            }
+
+            .heart-bg {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            .ring-icon {
+                font-size: 50px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+                letter-spacing: 0.5px;
+            }
+
+            button {
+                padding: 12px 28px;
+                font-size: 1em;
+            }
+
+            .message h2 {
+                font-size: 1.4em;
+            }
+
+            .message p {
+                font-size: 0.95em;
+            }
         }
 
         .question-container {
@@ -232,15 +313,35 @@
             const container = document.querySelector('.buttons');
             const containerRect = container.getBoundingClientRect();
             
-            // Random position within the buttons container
             const maxX = containerRect.width - noBtn.offsetWidth;
             const maxY = containerRect.height - noBtn.offsetHeight;
             
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+            // Choose random extreme position: 0 = far left, 1 = far right, 2 = top, 3 = bottom
+            const position = Math.floor(Math.random() * 4);
             
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            let newX, newY;
+            
+            switch(position) {
+                case 0: // Far left
+                    newX = 0;
+                    newY = Math.random() * maxY;
+                    break;
+                case 1: // Far right
+                    newX = maxX;
+                    newY = Math.random() * maxY;
+                    break;
+                case 2: // Top
+                    newX = Math.random() * maxX;
+                    newY = 0;
+                    break;
+                case 3: // Bottom
+                    newX = Math.random() * maxX;
+                    newY = maxY;
+                    break;
+            }
+            
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
         }
 
         // When Yes is clicked
